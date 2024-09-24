@@ -47,7 +47,12 @@ def predict():
         # Calculate the price
         prediction = calculate_price(solar_radiation, carbon_footprint, electricity_demand, cloud_coverage, solar_energy_supply)
 
-        return jsonify({'prediction': round(prediction, 2)})
+        return jsonify({'prediction': round(prediction, 2),
+                        'solar_radiation': round(solar_radiation, 2),
+                        'carbon_footprint': round(carbon_footprint, 2),
+                        'electricity_demand': round(electricity_demand, 2),
+                        'cloud_coverage': round(cloud_coverage, 2),
+                        'solar_energy_supply': round(solar_energy_supply, 2)})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
