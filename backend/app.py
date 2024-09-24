@@ -23,36 +23,28 @@ except Exception as e:
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get parameters from request
-        data = request.get_json()
+        # Get the last 24 rows of the dataset
+        last_24_rows = df.tail(24)
         
-        # Example: using the first row of the dataset for prediction
-        if not data.get('index'):
-            return jsonify({'error': 'Index not provided.'}), 400
-        
-        index = int(data['index'])
+        # Extract parameters from the last 24 rows as lists
+        solar_radiation = last_24_rows['Solar Radiation (kW/m²)'].tolist()
+        carbon_footprint = last_24_rows['Carbon Footprint (kgCO₂)'].tolist()
+        electricity_demand = last_24_rows['Electricity Demand (kWh)'].tolist()
+        cloud_coverage = last_24_rows['Cloud Coverage (%)'].tolist()
+        solar_energy_supply = last_24_rows['Energy Supply from Solar (kWh)'].tolist()
 
-        if index < 0 or index >= len(df):
-            return jsonify({'error': 'Index out of bounds.'}), 400
-
-        # Extract parameters from the specified row
-        row = df.iloc[index]
-        
-        solar_radiation = row['Solar Radiation (kW/m²)']
-        carbon_footprint = row['Carbon Footprint (kgCO₂)']
-        electricity_demand = row['Electricity Demand (kWh)']
-        cloud_coverage = row['Cloud Coverage (%)']
-        solar_energy_supply = row['Energy Supply from Solar (kWh)']
-
-        # Calculate the price
+        # Calculate a single price based on the last 24 hours
         prediction = calculate_price(solar_radiation, carbon_footprint, electricity_demand, cloud_coverage, solar_energy_supply)
 
-        return jsonify({'prediction': round(prediction, 2),
-                        'solar_radiation': round(solar_radiation, 2),
-                        'carbon_footprint': round(carbon_footprint, 2),
-                        'electricity_demand': round(electricity_demand, 2),
-                        'cloud_coverage': round(cloud_coverage, 2),
-                        'solar_energy_supply': round(solar_energy_supply, 2)})
+        # Return the single predicted price along with all the last 24 hours of data
+        return jsonify({
+            'prediction': prediction,
+            'solar_radiation': solar_radiation,
+            'carbon_footprint': carbon_footprint,
+            'electricity_demand': electricity_demand,
+            'cloud_coverage': cloud_coverage,
+            'solar_energy_supply': solar_energy_supply
+        })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
