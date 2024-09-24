@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './WaterForm.css';
+import Sidebar from './Sidebar';
+import './Layout.css';
 
-function WaterForm() {
+function Layout() {
   // State variables
   const [waterUsage, setWaterUsage] = useState('');
   const [prediction, setPrediction] = useState('');
@@ -25,7 +26,8 @@ function WaterForm() {
 };
 
   return (
-    <div className="water-form-container">
+    <div className="layout-container">
+      <Sidebar />
       <form onSubmit={handleSubmit}>
         <label>
           Enter Water Usage (in litres):
@@ -52,4 +54,4 @@ function WaterForm() {
   );
 }
 
-export default WaterForm;
+export default Layout;

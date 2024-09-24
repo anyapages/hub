@@ -1,11 +1,10 @@
 import React from 'react';
-import WaterForm from './components/WaterForm';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <div className="App">
-      <h1>Smart City Hub</h1>
-      <WaterForm />
+      <Layout />
     </div>
   );
 }

@@ -1,4 +1,9 @@
 /* WaterForm component styles */
+.layout-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
 form {
   margin: 20px auto;
   padding: 20px;

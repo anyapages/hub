@@ -1,0 +1,9 @@
+.sidebar {
+  padding: 40px;
+  text-align: left;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
