@@ -1,6 +1,8 @@
 .sidebar {
   padding: 40px;
   text-align: left;
+  background-color: #FFF;
+  min-height: 100vh;
 }
 
 .sidebar ul {

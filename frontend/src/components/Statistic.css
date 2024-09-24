@@ -1,0 +1,41 @@
+.statistic {
+  background-color: #FFF;
+  border-radius: 20px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  gap: 1.5em;
+  text-align: left;
+}
+
+.statistic__icon {
+  border-radius: 100%;
+  background-color: #F4F7FE;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+}
+
+.statistic__icon-img {
+
+}
+
+.statistic__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.statistic__title {
+  color: #A3AED0;
+  font-weight: normal;
+  margin: 0 0 0.25em;
+}
+
+.statistic__value {
+  color: #2B3674;
+  font-weight: bold;
+  margin: 0;
+  font-size: 2.5em;
+}

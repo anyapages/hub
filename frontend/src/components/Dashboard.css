@@ -1,29 +1,52 @@
+.layout {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 5fr;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 32px;
+    gap: 24px;
+    background-color: #F4F7FE;
+}
+
+.graph {
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 24px;
+    display: grid;
+    place-items: center;
+    grid-column: span 2;
+    grid-row: 2;
+}
+
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 nav {
-  background-color: #f4f4f4;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
+    background-color: #f4f4f4;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 h1 {
-  color: #333;
-  text-align: center;
-  margin-top: 20px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
 }
 
 footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 img {
-  margin: 0 auto;
-  display: block;
+    margin: 0 auto;
+    display: block;
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import './Dashboard.css';
 import logo from '../assets/logo.png';  // Assuming the logo.png is in the correct path
 import earth from '../assets/earth.gif';
 import quantaLogo from '../assets/quanta.png';
-import './Dashboard.css'
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -71,8 +71,7 @@ const Dashboard = () => {
           <img src={earth} alt="Earth" style={{ width: '400px', height: '400px' }} />
       </div>
 
-      {/* Dashboard Content */}
-      
+      {/* Dashboard Content */}      
 
       <div style={{ 
         display: 'flex', 
@@ -83,7 +82,7 @@ const Dashboard = () => {
         padding: '20px',
         margin: '0 auto'  // This centers the container horizontally
       }}>        
-      <h1>Solar Radiation</h1>
+        <h1>Solar Radiation</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <XAxis dataKey="Time" />
@@ -119,7 +118,7 @@ const Dashboard = () => {
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Carbon Footprint</h1>
+        <h1>Electricity Demand</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <XAxis dataKey="Time" />
@@ -131,7 +130,7 @@ const Dashboard = () => {
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Electricity Demand</h1>
+        <h1>Cloud Coverage</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <XAxis dataKey="Time" />
@@ -142,21 +141,8 @@ const Dashboard = () => {
             <Line type="monotone" dataKey="Cloud Coverage" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
-
-        <h1>Cloud Coverage</h1>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <CartesianGrid stroke="#f5f5f5" />
-            <Line type="monotone" dataKey="Carbon Footprint" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
-
-        
-      </div>
+   
+      </div> {/* Close the wrapping div */}
 
       {/* Footer */}
       <footer style={{ backgroundColor: '#333', color: '#fff', padding: '20px', textAlign: 'center' }}>
