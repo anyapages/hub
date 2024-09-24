@@ -35,6 +35,7 @@ def predict():
 
         # Calculate a single price based on the last 24 hours
         prediction = calculate_price(solar_radiation, carbon_footprint, electricity_demand, cloud_coverage, solar_energy_supply)
+        print(prediction)
 
         # Return the single predicted price along with all the last 24 hours of data
         return jsonify({
