@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import './Dashboard.css'
 import logo from '../assets/logo.png';  // Assuming the logo.png is in the correct path
 import earth from '../assets/earth.png';
 import quantaLogo from '../assets/quanta.png';
-import './Dashboard.css'
+import Sidebar from './Sidebar';
+import Statistic from './Statistic';
+import IconBolt from './../assets/Icon/Bolt.svg';
+import IconSun from './../assets/Icon/Sun.svg';
+import IconCloud from './../assets/Icon/Cloud.svg';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -45,35 +50,46 @@ const Dashboard = () => {
       </nav>
 
       {/* Dashboard Content */}
-      <div style={{ width: '100%', height: 'auto', padding: '20px' }}>
-        <h1>Solar Radiation and Temperature</h1>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <CartesianGrid stroke="#f5f5f5" />
-            <Line type="monotone" dataKey="Solar Radiation" stroke="#8884d8" />
-            <Line type="monotone" dataKey="Energy Supply" stroke="#82ca9d" />
-          </LineChart>
-        </ResponsiveContainer>
-
-        <h1>Energy Supply vs. Cloud Coverage</h1>
-        <ResponsiveContainer width="100%" height={400}>
-          <BarChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="Energy Supply" fill="#8884d8" />
-            <Bar dataKey="Cloud Coverage" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>
-
-        {/* Earth image */}
-        <div style={{ textAlign: 'center', marginTop: '30px' }}>
-          <img src={earth} alt="Earth" style={{ width: '200px', height: '200px' }} />
+      <div className="layout">
+        <Sidebar />
+        <div className="mainbar">
+          <div className="dashboard">
+            <Statistic title="Forecast Solar Irradiance" value="45" icon={IconSun}/>
+            <Statistic title="Cloud coverage" value="30%" icon={IconCloud}/>
+            <Statistic title="Energy Output" value="1000mWh" icon={IconBolt}/>
+            <Statistic title="CO2 Saved" value=""/>
+            <div className="graph">
+              <h1>Solar Radiation and Temperature</h1>
+              <ResponsiveContainer width="100%" height={400}>
+                <LineChart data={data}>
+                  <XAxis dataKey="Time" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <CartesianGrid stroke="#f5f5f5" />
+                  <Line type="monotone" dataKey="Solar Radiation" stroke="#8884d8" />
+                  <Line type="monotone" dataKey="Energy Supply" stroke="#82ca9d" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="graph">
+              <h1>Energy Supply vs. Cloud Coverage</h1>
+              <ResponsiveContainer width="100%" height={400}>
+                <BarChart data={data}>
+                  <XAxis dataKey="Time" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="Energy Supply" fill="#8884d8" />
+                  <Bar dataKey="Cloud Coverage" fill="#82ca9d" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          {/* Earth image */}
+          <div style={{ textAlign: 'center', marginTop: '30px' }}>
+            <img src={earth} alt="Earth" style={{ width: '200px', height: '200px' }} />
+          </div>
         </div>
       </div>
 
