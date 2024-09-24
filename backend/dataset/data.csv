@@ -1,0 +1,7 @@
+Date,Time,Solar Radiation (kW/m²),Carbon Footprint (kgCO₂),Temperature (°C),Electricity Demand (kWh),Price ($/kWh),Cloud Coverage (%),Wind Speed (m/s),Energy Supply from Solar (kWh),Day of Week,Season
+2024-09-01,12:00,0.85,0.45,25,3000,0.10,20,5,500,Monday,Summer
+2024-09-01,13:00,0.90,0.42,27,3100,0.09,15,6,520,Monday,Summer
+2024-09-01,14:00,0.88,0.41,26,3200,0.08,18,5,530,Monday,Summer
+2024-09-02,12:00,0.70,0.50,20,2800,0.12,50,3,420,Tuesday,Summer
+2024-09-02,13:00,0.75,0.48,22,2900,0.11,40,4,450,Tuesday,Summer
+2024-09-02,14:00,0.78,0.46,24,3000,0.10,35,4,460,Tuesday,Summer
