@@ -66,7 +66,6 @@ const Dashboard = () => {
       </nav>
 
       {/* Earth image */}
-      <h1>Live Earth Image</h1>
       <div style={{ textAlign: 'center', marginTop: '30px' }}>
           <img src={earth} alt="Earth" style={{ width: '400px', height: '400px' }} />
       </div>
@@ -146,7 +145,7 @@ const Dashboard = () => {
 
       {/* Footer */}
       <footer style={{ backgroundColor: '#333', color: '#fff', padding: '20px', textAlign: 'center' }}>
-        <p>© HelioWise created by <img src={quantaLogo} alt="Quanta Team" style={{ height: '30px' }} /> Team</p>
+          <p>© HelioWise created by</p> <p> <img src={quantaLogo} alt="Quanta Team" style={{ height: '90px' }} /></p>
       </footer>
     </div>
   );
