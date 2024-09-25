@@ -64,7 +64,6 @@ const Dashboard = () => {
       </nav>
 
       {/* Earth image */}
-      <h1>Live Earth Image</h1>
       <div style={{ textAlign: 'center', marginTop: '30px' }}>
           <img src={earth} alt="Earth" style={{ width: '400px', height: '400px' }} />
       </div>
