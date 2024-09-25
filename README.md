@@ -10,9 +10,6 @@ This full-stack web application predicts future energy consumption and dynamic e
 - Backend: Flask (Python)
 - Scikit-learn (for solar forecasting and dynamic pricing models)
 
-Here’s the solar forecasting formula written in Markdown format for your `README.md` file:
-
-
 ## Solar Forecasting Formula
 
 In this project, we use a solar forecasting model to dynamically predict energy prices based on several environmental and operational factors. The pricing model is structured as follows:
