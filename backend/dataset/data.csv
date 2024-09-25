@@ -1,4 +1,4 @@
-Date,Time,Solar Radiation (kW/m²),Carbon Footprint (kgCO₂),Temperature (°C),Electricity Demand (kWh),Price ($/kWh),Cloud Coverage (%),Wind Speed (m/s),Energy Supply from Solar (kWh),Day of Week,Season
+Date,Time,Solar Radiation (kW/m²),Carbon Footprint (kgCO₂),Temperature (°C),Electricity Demand (kWh),Electricity Price ($/kWh),Cloud Coverage (%),Wind Speed (m/s),Energy Supply from Solar (kWh),Day of Week,Season
 2024-09-02,00:00,0.86,0.39,20.4,2658,0.08,52,5.7,419,Monday,Summer
 2024-09-02,01:00,0.8,0.52,15.5,2874,0.13,72,3.8,408,Monday,Summer
 2024-09-02,02:00,0.56,0.52,17.9,3270,0.11,40,7.3,499,Monday,Summer

@@ -10,6 +10,33 @@ This full-stack web application predicts future energy consumption and dynamic e
 - Backend: Flask (Python)
 - Scikit-learn (for solar forecasting and dynamic pricing models)
 
+Here’s the solar forecasting formula written in Markdown format for your `README.md` file:
+
+
+## Solar Forecasting Formula
+
+In this project, we use a solar forecasting model to dynamically predict energy prices based on several environmental and operational factors. The pricing model is structured as follows:
+
+**Dynamic Pricing Formula:**
+
+```
+Price = (α * (1 / avg_solar_radiation)) 
+        + (β * avg_carbon_footprint) 
+        + (γ * avg_electricity_demand) 
+        + (δ * avg_cloud_coverage) 
+        - (ε * avg_solar_energy_supply)
+```
+
+Where:
+- **avg_solar_radiation**: The average solar radiation (W/m²) over 24 hours.
+- **avg_carbon_footprint**: The average carbon footprint (kg CO2) over 24 hours.
+- **avg_electricity_demand**: The average electricity demand (MW) over 24 hours.
+- **avg_cloud_coverage**: The average cloud coverage (%) over 24 hours.
+- **avg_solar_energy_supply**: The average solar energy supply (kWh) over 24 hours.
+
+The model uses predefined constants (α, β, γ, δ, ε) to weigh the influence of each factor on the final energy price. These constants can be fine-tuned based on regional data or specific use cases.
+
+
 ## How to Run
 
 Frontend:
