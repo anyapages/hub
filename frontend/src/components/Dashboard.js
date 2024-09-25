@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
 import './Dashboard.css';
-import logo from '../assets/logo.png';  // Assuming the logo.png is in the correct path
+import logo from '../assets/logo.png';
 import earth from '../assets/earth.gif';
 import quantaLogo from '../assets/quanta.png';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
-  const [prediction, setPrediction] = useState(null);  // Separate state for prediction
+  const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // Fetch data from Flask API
     axios.post('http://127.0.0.1:5000/predict')
       .then(response => {
         const { prediction, solar_radiation, carbon_footprint, electricity_demand, cloud_coverage, solar_energy_supply } = response.data;
 
-        // Format the data for the charts
         const formattedData = solar_radiation.map((val, index) => ({
-          Time: index + ":00",  // Use index as a placeholder for time
+          Time: index + "",
           'Solar Radiation': solar_radiation[index],
           'Carbon Footprint': carbon_footprint[index],
           'Electricity Demand': electricity_demand[index],
           'Cloud Coverage': cloud_coverage[index],
           'Energy Supply': solar_energy_supply[index]
         }));
-        setPrediction(prediction);  // Store prediction separately
+        setPrediction(prediction);
         setData(formattedData);
       })
       .catch(error => {
@@ -43,19 +41,19 @@ const Dashboard = () => {
       {/* Navbar */}
       <nav style={{
           padding: '10px',
-          backgroundColor: '#ADD8E6',  // Light blue background color
+          backgroundColor: '#ADD8E6',
           display: 'flex',
-          justifyContent: 'center',  // Center the content
-          alignItems: 'center',      // Align vertically
-          position: 'sticky',        // Make navbar sticky
-          top: 0,                    // Stick to the top
-          zIndex: 1000,              // Ensure it's above other content
-          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', // Optional: add a shadow
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'sticky',
+          top: 0,
+          zIndex: 1000,
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
       }}>
           <div style={{
               display: 'flex',
-              alignItems: 'center',   // Align items in the div
-              gap: '10px'             // Add some space between logo and text
+              alignItems: 'center',
+              gap: '10px'
           }}>
               <img src={logo} alt="HelioWise Logo" style={{ height: '80px' }} />
               {prediction !== null
@@ -66,6 +64,7 @@ const Dashboard = () => {
       </nav>
 
       {/* Earth image */}
+      <h1>Live Earth Image</h1>
       <div style={{ textAlign: 'center', marginTop: '30px' }}>
           <img src={earth} alt="Earth" style={{ width: '400px', height: '400px' }} />
       </div>
@@ -79,69 +78,64 @@ const Dashboard = () => {
         width: '80%', 
         height: 'auto', 
         padding: '20px',
-        margin: '0 auto'  // This centers the container horizontally
+        margin: '0 auto'
       }}>        
-        <h1>Solar Radiation</h1>
+        <h1>Solar Radiation (W/m²)</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
+            <XAxis label={{ value: "Time", position: 'insideBottom', offset: -5 }} dataKey="Time" />
+            <YAxis label={{ value: "W/m²", angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => `${value} W/m²`} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line type="monotone" dataKey="Solar Radiation" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Energy Supply</h1>
+        <h1>Energy Supply (kWh)</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
+            <XAxis label={{ value: "Time", position: 'insideBottom', offset: -5 }} dataKey="Time" />
+            <YAxis label={{ value: "kWh", angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => `${value} kWh`} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line type="monotone" dataKey="Energy Supply" stroke="#82ca9d" />
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Carbon Footprint</h1>
+        <h1>Carbon Footprint (kg CO₂)</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
+            <XAxis label={{ value: "Time", position: 'insideBottom', offset: -5 }} dataKey="Time" />
+            <YAxis label={{ value: "kg CO₂", angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => `${value} kg CO₂`} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line type="monotone" dataKey="Carbon Footprint" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Electricity Demand</h1>
+        <h1>Electricity Demand (MW)</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
+            <XAxis label={{ value: "Time", position: 'insideBottom', offset: -5 }} dataKey="Time" />
+            <YAxis label={{ value: "MW", angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => `${value} MW`} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line type="monotone" dataKey="Electricity Demand" stroke="#82ca9d" />
           </LineChart>
         </ResponsiveContainer>
 
-        <h1>Cloud Coverage</h1>
+        <h1>Cloud Coverage (%)</h1>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
-            <XAxis dataKey="Time" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
+            <XAxis label={{ value: "Time", position: 'insideBottom', offset: -5 }} dataKey="Time" />
+            <YAxis label={{ value: "%", angle: -90, position: 'insideLeft' }} />
+            <Tooltip formatter={(value) => `${value}%`} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line type="monotone" dataKey="Cloud Coverage" stroke="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
    
-      </div> {/* Close the wrapping div */}
+      </div>
 
       {/* Footer */}
       <footer style={{ backgroundColor: '#333', color: '#fff', padding: '20px', textAlign: 'center' }}>
